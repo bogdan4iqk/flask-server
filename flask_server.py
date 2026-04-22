@@ -4,6 +4,9 @@ import numpy as np
 from PIL import Image
 import base64
 import io
+import os
+
+port = int(os.environ.get("PORT", 5001))
 
 app = Flask(__name__)
 
@@ -50,5 +53,5 @@ def predict():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    print("Flask сервер запущен на порту 5001")
-    app.run(host="0.0.0.0", port=5001, debug=False)
+    print(f"Flask сервер запущен на порту {port}")
+    app.run(host="0.0.0.0", port=port)
